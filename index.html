@@ -3,93 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Profile | Ezo He</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <title>Creative Personal Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
 
-<!-- Navigation -->
-<header>
-    <nav class="navbar">
-        <div class="logo">Ezo He</div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">MY.PROFILE</div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="resources.html">Resources</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#guestbook">Guestbook</a></li>
         </ul>
     </nav>
-</header>
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <h1>Hello, I'm <span>Ezo</span></h1>
-    <p>Computer Science Student | Aspiring Developer</p>
-    <button id="scrollBtn">Learn More</button>
-</section>
+    <div id="app">
 
-<!-- About Section -->
-<section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-        I am a Computer Science student who enjoys learning about technology, web development,
-        and problem-solving. I aim to create simple yet meaningful digital experiences
-        that are both functional and visually appealing.
-    </p>
-</section>
+        <section id="hero" class="section-padding">
+            <div class="hero-content glass-card fade-in">
+                <h1>Hello, I'm <span class="gradient-text">Your Name</span></h1>
+                <p class="subtitle">Creative Developer & Digital Explorer</p>
+                <a href="#about" class="cta-button">See My Work</a>
+            </div>
+        </section>
 
-<!-- Skills Section -->
-<section id="skills" class="section bg-light">
-    <h2>Skills</h2>
-    <div class="grid">
-        <div class="card">HTML5</div>
-        <div class="card">CSS3</div>
-        <div class="card">JavaScript</div>
-        <div class="card">Python</div>
-        <div class="card">Git & GitHub</div>
-        <div class="card">Responsive Design</div>
-    </div>
-</section>
+        <section id="about" class="section-padding">
+            <h2 class="section-title gradient-text">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text glass-card">
+                    <h3>My Journey</h3>
+                    <p>I build digital experiences that blend aesthetics with functionality. I am passionate about clean code, creative design, and learning new technologies like Vue.js.</p>
+                </div>
+                <div class="about-skills glass-card">
+                    <h3>Core Skills</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>Modern JavaScript</li>
+                        <li>UI/UX Design</li>
+                        <li>Responsive Layouts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-<!-- Projects Section -->
-<section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Personal Website</h3>
-            <p>A responsive one-page profile website.</p>
-        </div>
-        <div class="card">
-            <h3>Python Game</h3>
-            <p>A simple game developed using Python.</p>
-        </div>
-        <div class="card">
-            <h3>Academic Projects</h3>
-            <p>Various school-related programming activities.</p>
-        </div>
-    </div>
-</section>
+        <section id="gallery" class="section-padding">
+            <h2 class="section-title gradient-text">Creative Gallery</h2>
+            <p style="text-align: center; color: var(--text-secondary);">Powered by Vue.js rendering lists</p>
+            
+            <div class="gallery-grid">
+                <div 
+                    v-for="(item, index) in galleryItems" 
+                    :key="index" 
+                    class="gallery-item glass-card"
+                >
+                    <div class="img-container">
+                        <img :src="'https://picsum.photos/400/300?random=' + index" :alt="item.caption">
+                    </div>
+                    <div class="caption">
+                        <p>{{ item.caption }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- Contact Section -->
-<section id="contact" class="section bg-light">
-    <h2>Contact</h2>
-    <p>Email: ezoh@example.com</p>
-    <p>GitHub: github.com/ezoh</p>
-</section>
+        <section id="guestbook" class="section-padding">
+            <h2 class="section-title gradient-text">Digital Guestbook</h2>
+            
+            <div class="guestbook-container glass-card">
+                <form @submit.prevent="addEntry" class="guestbook-form">
+                    <input 
+                        type="text" 
+                        v-model="newEntryName" 
+                        placeholder="Your Name" 
+                        required
+                    >
+                    <textarea 
+                        v-model="newEntryMessage" 
+                        placeholder="Leave a note..." 
+                        required
+                    ></textarea>
+                    <button type="submit" class="cta-button">Sign Guestbook</button>
+                </form>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2026 Ezo He. All Rights Reserved.</p>
-</footer>
+                <div class="guestbook-entries">
+                    <h3>Recent Signatures:</h3>
+                    <ul>
+                        <li v-for="(entry, index) in guestbookList" :key="index" class="fade-in-entry">
+                            <strong>{{ entry.name }}:</strong> {{ entry.message }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-<!-- JavaScript -->
-<script src="js/script.js"></script>
+    </div> <footer>
+        <p>© 2024 Creative Profile. <a href="resources.html" style="color: var(--primary-color);">View Resources Used</a></p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
