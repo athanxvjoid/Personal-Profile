@@ -1,13 +1,28 @@
-const toggleBtn = document.getElementById('theme-toggle');
-const root = document.documentElement;
+// Smooth scroll to About section
+document.getElementById("scrollBtn").addEventListener("click", function () {
+    document.getElementById("about").scrollIntoView({
+        behavior: "smooth"
+    });
+});
 
-// Persistence logic
-const currentTheme = localStorage.getItem('theme') || 'dark';
-root.setAttribute('data-theme', currentTheme);
+// Active link highlight
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-toggleBtn.addEventListener('click', () => {
-    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 60;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+            link.classList.add("active");
+        }
+    });
 });
