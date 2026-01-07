@@ -1,0 +1,56 @@
+:root {
+    --primary: #2563eb;
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --glass: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] {
+    --bg: #0f172a;
+    --text: #f1f5f9;
+    --glass: rgba(30, 41, 59, 0.7);
+}
+
+* { margin: 0; padding: 0; box-box: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s;
+}
+
+/* Flexbox Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 5%;
+    position: fixed;
+    width: 90%;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+
+/* CSS Grid for Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skill-item {
+    background: var(--glass);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Consider a burger menu for extra points */
+    .hero h1 { font-size: 2.5rem; }
+}
