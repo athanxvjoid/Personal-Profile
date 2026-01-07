@@ -3,107 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patrick Pahayupan | IT Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    </style>
+    <title>Patrick Pahayupan | IT Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <div id="app">
-        <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
-            <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-                <span class="font-bold text-xl tracking-tight text-blue-600">PP.</span>
-                <div class="space-x-6 font-medium text-sm uppercase tracking-widest">
-                    <a href="#about" class="hover:text-blue-600 transition">About</a>
-                    <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-                    <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-                </div>
-            </div>
-        </nav>
+<body>
+    <nav class="navbar">
+        <div class="logo">PP.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><button id="theme-toggle">🌙</button></li>
+        </ul>
+    </nav>
 
-        <header class="pt-32 pb-16 px-6">
-            <div class="max-w-5xl mx-auto text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">Hi, I'm <span class="text-blue-600">Patrick</span></h1>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Information Technology student at Asia Pacific College. Passionate about cybersecurity, database management, and building efficient digital solutions.
-                </p>
-                <div class="mt-8 flex justify-center gap-4">
-                    <a href="#projects" class="bg-gray-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-700 transition">View My Work</a>
-                    <a href="mailto:your-email@gmail.com" class="border border-gray-300 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Contact Me</a>
-                </div>
-            </div>
-        </header>
+    <header class="hero" id="about">
+        <div class="glass-card">
+            <h1>Patrick Pahayupan</h1>
+            <p>2nd Year IT Student @ APC</p>
+            <p class="bio">Building secure, data-driven solutions with a focus on Cybersecurity and Database Management.</p>
+        </div>
+    </header>
 
-        <section id="skills" class="py-20 bg-white">
-            <div class="max-w-5xl mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-12 text-center">Core Technologies</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div v-for="skill in skills" :key="skill" class="p-4 bg-gray-50 rounded-xl text-center font-medium border border-gray-100 hover:border-blue-300 transition">
-                        {{ skill }}
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="skills" class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">MySQL</div>
+            <div class="skill-item">Flutter</div>
+            <div class="skill-item">Cybersecurity</div>
+            <div class="skill-item">TigerGraph</div>
+        </div>
+    </section>
 
-        <section id="projects" class="py-20">
-            <div class="max-w-5xl mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-12">Featured Projects</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div v-for="project in projects" :key="project.title" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                        <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400">
-                            [ Image: {{ project.title }} ]
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">{{ project.title }}</h3>
-                            <p class="text-gray-600 text-sm mb-4">{{ project.description }}</p>
-                            <div class="flex gap-2 mb-6">
-                                <span v-for="tag in project.tags" class="text-[10px] bg-blue-50 text-blue-600 px-2 py-1 rounded-md font-bold uppercase tracking-wider">{{ tag }}</span>
-                            </div>
-                            <a :href="project.link" target="_blank" class="text-blue-600 font-semibold hover:underline flex items-center gap-2">
-                                View on GitHub →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Work</h2>
+        <div class="project-card">
+            <h3>Fitness Journey App</h3>
+            <p>A mobile application built with Flutter for workout tracking.</p>
+            <a href="https://github.com/athanxvjoid" class="btn">View Repo</a>
+        </div>
+    </section>
 
-        <footer class="py-12 bg-gray-900 text-gray-400 text-center text-sm">
-            <p>© 2026 Patrick Pahayupan. Built with Vue.js & Tailwind.</p>
-            <div class="mt-4 flex justify-center gap-6">
-                <a href="#" class="hover:text-white transition">LinkedIn</a>
-                <a href="#" class="hover:text-white transition">GitHub</a>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        const { createApp } = Vue;
-        createApp({
-            data() {
-                return {
-                    skills: ['MySQL', 'TigerGraph', 'Flutter', 'Arduino', 'Cybersecurity', 'JavaScript', 'HTML/CSS', 'Python'],
-                    
-                    projects: [
-                        {
-                            title: "Mobile Fitness Tracker",
-                            description: "A Flutter application designed for a 13-week fitness journey, focusing on UI/UX and data persistence.",
-                            tags: ["Flutter", "Dart", "Firebase"],
-                            link: "https://github.com/athanxvjoid/fitness-app"
-                        },
-                        {
-                            title: "Database Schema Design",
-                            description: "Complex ERD design and SQL implementation for a school management system.",
-                            tags: ["MySQL", "Database Design"],
-                            link: "https://github.com/athanxvjoid/db-project"
-                        }
-                    ]
-                }
-            }
-        }).mount('#app')
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
