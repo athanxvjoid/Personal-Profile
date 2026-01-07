@@ -3,109 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Personal Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Patrick Pahayupan | The Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS overrides for the Music Theme */
+        body {
+            background-color: #121212; /* Spotify-ish Dark Mode */
+            color: #b3b3b3;
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1, h2, h3, .text-highlight {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .accent-green {
+            color: #1DB954; /* Bright Green Accent */
+        }
+        .vinyl-img {
+            border-radius: 50%;
+            border: 5px solid #181818;
+            box-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
+            transition: transform 1s;
+        }
+        .vinyl-img:hover {
+            transform: rotate(360deg); /* CSS Animation */
+        }
+        .skill-track {
+            background-color: #181818;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #1DB954;
+        }
+        .skill-track:hover {
+            background-color: #282828;
+            cursor: default;
+        }
+        .btn-play {
+            background-color: #1DB954;
+            color: black;
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-weight: bold;
+            border: none;
+        }
+        .btn-play:hover {
+            background-color: #1ed760;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
 
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-
-    <nav class="glass-nav">
-        <div class="logo">MY.PROFILE</div>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#guestbook">Guestbook</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top p-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">PP <span class="accent-green">STUDIOS</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Bio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Tracks (Skills)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <div id="app">
-
-        <section id="hero" class="section-padding">
-            <div class="hero-content glass-card fade-in">
-                <h1>Hello, I'm <span class="gradient-text">Your Name</span></h1>
-                <p class="subtitle">Creative Developer & Digital Explorer</p>
-                <a href="#about" class="cta-button">See My Work</a>
+    <section id="hero" class="container py-5 text-center text-lg-start d-flex align-items-center min-vh-75">
+        <div class="row w-100 align-items-center">
+            <div class="col-lg-6">
+                <p class="accent-green text-uppercase fw-bold mb-1">Now Playing</p>
+                <h1 class="display-3 mb-3">Patrick Pahayupan</h1>
+                <p class="lead mb-4">
+                    BSIT Student @ Asia Pacific College.<br>
+                    Focusing on <span class="text-white">Cybersecurity</span> & <span class="text-white">App Dev</span>.
+                </p>
+                <button id="connectBtn" class="btn btn-play" onclick="changeStatus()">
+                    ▶ Connect
+                </button>
+                <p id="statusText" class="mt-3 text-muted small">Status: Idle</p>
             </div>
-        </section>
-
-        <section id="about" class="section-padding">
-            <h2 class="section-title gradient-text">About Me</h2>
-            <div class="about-grid">
-                <div class="about-text glass-card">
-                    <h3>My Journey</h3>
-                    <p>I build digital experiences that blend aesthetics with functionality. I am passionate about clean code, creative design, and learning new technologies like Vue.js.</p>
-                </div>
-                <div class="about-skills glass-card">
-                    <h3>Core Skills</h3>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
-                        <li>Modern JavaScript</li>
-                        <li>UI/UX Design</li>
-                        <li>Responsive Layouts</li>
-                    </ul>
-                </div>
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                <img src="https://via.placeholder.com/350" alt="Patrick Profile" class="img-fluid vinyl-img" width="350">
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="gallery" class="section-padding">
-            <h2 class="section-title gradient-text">Creative Gallery</h2>
-            <p style="text-align: center; color: var(--text-secondary);">Powered by Vue.js rendering lists</p>
-            
-            <div class="gallery-grid">
-                <div 
-                    v-for="(item, index) in galleryItems" 
-                    :key="index" 
-                    class="gallery-item glass-card"
-                >
-                    <div class="img-container">
-                        <img :src="'https://picsum.photos/400/300?random=' + index" :alt="item.caption">
-                    </div>
-                    <div class="caption">
-                        <p>{{ item.caption }}</p>
-                    </div>
-                </div>
+    <section id="about" class="container py-5">
+        <h2 class="mb-4"><span class="accent-green">///</span> Liner Notes (About Me)</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <p>
+                    I am a 19-year-old IT sophomore currently exploring the intersection of secure systems and mobile development. 
+                    Like building a complex music arrangement, I believe coding requires structure, creativity, and rhythm.
+                </p>
+                <p>
+                    <strong>Current Projects:</strong>
+                </p>
+                <ul>
+                    <li>13-Week Fitness Journey (Discipline & Consistency)</li>
+                    <li>Flutter Mobile App Development</li>
+                    <li>Database Management with MySQL & TigerGraph</li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="guestbook" class="section-padding">
-            <h2 class="section-title gradient-text">Digital Guestbook</h2>
-            
-            <div class="guestbook-container glass-card">
-                <form @submit.prevent="addEntry" class="guestbook-form">
-                    <input 
-                        type="text" 
-                        v-model="newEntryName" 
-                        placeholder="Your Name" 
-                        required
-                    >
-                    <textarea 
-                        v-model="newEntryMessage" 
-                        placeholder="Leave a note..." 
-                        required
-                    ></textarea>
-                    <button type="submit" class="cta-button">Sign Guestbook</button>
-                </form>
-
-                <div class="guestbook-entries">
-                    <h3>Recent Signatures:</h3>
-                    <ul>
-                        <li v-for="(entry, index) in guestbookList" :key="index" class="fade-in-entry">
-                            <strong>{{ entry.name }}:</strong> {{ entry.message }}
-                        </li>
-                    </ul>
+    <section id="skills" class="container py-5 pb-5">
+        <h2 class="mb-4"><span class="accent-green">///</span> Top Tracks (Skills)</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="skill-track d-flex justify-content-between">
+                    <span>01. Cybersecurity Fundamentals</span>
+                    <span class="text-muted">3:45</span>
+                </div>
+                <div class="skill-track d-flex justify-content-between">
+                    <span>02. MySQL & Database Design</span>
+                    <span class="text-muted">4:20</span>
+                </div>
+                <div class="skill-track d-flex justify-content-between">
+                    <span>03. Flutter (Dart)</span>
+                    <span class="text-muted">2:55</span>
                 </div>
             </div>
-        </section>
+            <div class="col-md-6">
+                <div class="skill-track d-flex justify-content-between">
+                    <span>04. Embedded Systems (Arduino)</span>
+                    <span class="text-muted">3:10</span>
+                </div>
+                <div class="skill-track d-flex justify-content-between">
+                    <span>05. HTML5 & CSS3 (Bootstrap)</span>
+                    <span class="text-muted">5:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div> <footer>
-        <p>© 2024 Creative Profile. <a href="resources.html" style="color: var(--primary-color);">View Resources Used</a></p>
+    <footer class="text-center py-4 bg-black border-top border-dark">
+        <small>&copy; 2026 Patrick Pahayupan. Produced at APC.</small>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function changeStatus() {
+            // Get the HTML element by ID
+            const statusLabel = document.getElementById('statusText');
+            const btn = document.getElementById('connectBtn');
+            
+            // Logic to toggle text
+            if (btn.innerText.includes("Connect")) {
+                statusLabel.innerText = "Status: 🎵 Listening to user request...";
+                statusLabel.className = "mt-3 accent-green small";
+                btn.innerText = "|| Pause Connection";
+            } else {
+                statusLabel.innerText = "Status: Idle";
+                statusLabel.className = "mt-3 text-muted small";
+                btn.innerText = "▶ Connect";
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
