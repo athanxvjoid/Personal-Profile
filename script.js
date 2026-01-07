@@ -1,15 +1,13 @@
 const toggleBtn = document.getElementById('theme-toggle');
 const root = document.documentElement;
 
-const savedTheme = localStorage.getItem('theme') || 'light';
-root.setAttribute('data-theme', savedTheme);
-toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+// Persistence logic
+const currentTheme = localStorage.getItem('theme') || 'dark';
+root.setAttribute('data-theme', currentTheme);
 
 toggleBtn.addEventListener('click', () => {
-    const currentTheme = root.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    root.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
 });
