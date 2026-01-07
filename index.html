@@ -1,36 +1,91 @@
-<header class="hero" id="about">
-    <h1>Patrick <span style="color:var(--primary)">Pahayupan</span></h1>
-    <p class="bio">Information Technology Student specializing in Cybersecurity & Database Management.</p>
-</header>
-
-<main>
-    <section id="skills" class="container">
-        <h2 class="section-title">Technical Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-item">MySQL</div>
-            <div class="skill-item">Flutter</div>
-            <div class="skill-item">Cybersecurity</div>
-            <div class="skill-item">TigerGraph</div>
-            <div class="skill-item">Arduino</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrick Pahayupan | IT Professional Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">PP<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="resources.html" class="nav-res">Resources</a></li>
+                <li><button id="theme-toggle" class="theme-btn">🌙</button></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <section id="projects" class="container">
-        <h2 class="section-title">Featured Work</h2>
-        <div class="projects-grid">
-            <article class="project-card">
-                <h3>Fitness Journey Tracker</h3>
-                <p>A mobile application built with Flutter to track progress over a 13-week fitness journey.</p>
-                <div class="tags" style="margin-top: 1rem; font-size: 0.8rem; color: var(--primary);">#Flutter #Dart #Mobile</div>
-                <a href="#" class="btn">Source Code →</a>
-            </article>
-            
-            <article class="project-card">
-                <h3>Cybersecurity Lab</h3>
-                <p>Setup and configuration of a virtualized network environment for penetration testing.</p>
-                <div class="tags" style="margin-top: 1rem; font-size: 0.8rem; color: var(--primary);">#CyberSec #Networking</div>
-                <a href="#" class="btn">Source Code →</a>
-            </article>
+    <header class="hero" id="about">
+        <div class="hero-container">
+            <span class="badge">Available for Projects</span>
+            <h1>Patrick Pahayupan</h1>
+            <p class="subtitle">Information Technology Student specializing in <span class="highlight">Cybersecurity</span> & <span class="highlight">Database Management</span>.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-primary">View Portfolio</a>
+                <a href="mailto:patrick@example.com" class="btn-secondary">Get in Touch</a>
+            </div>
         </div>
-    </section>
-</main>
+    </header>
+
+    <main class="main-content">
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2>Technical Expertise</h2>
+                <p>Core competencies in modern software and security frameworks.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Database</h3>
+                    <p>MySQL, TigerGraph, Schema Design</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3>Development</h3>
+                    <p>Flutter, Dart, Mobile UI/UX</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🛡️</div>
+                    <h3>Security</h3>
+                    <p>Network Security, Pentesting, Arduino</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-header">
+                <h2>Featured Work</h2>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-img"></div>
+                    <div class="project-info">
+                        <h3>Fitness Journey Tracker</h3>
+                        <p>A comprehensive mobile application built to track fitness progress over 13 weeks.</p>
+                        <div class="tags"><span>Flutter</span> <span>Mobile</span></div>
+                        <a href="#" class="project-link">Source Code →</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-img sec-img"></div>
+                    <div class="project-info">
+                        <h3>Cybersecurity Lab</h3>
+                        <p>Simulated network environment for testing vulnerabilities and defense mechanisms.</p>
+                        <div class="tags"><span>Security</span> <span>Network</span></div>
+                        <a href="#" class="project-link">Source Code →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
