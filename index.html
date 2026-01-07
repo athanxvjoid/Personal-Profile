@@ -3,107 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Personal Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Patrick Pahayupan | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
 
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
+    <div class="bg-gradient"></div>
 
     <nav class="glass-nav">
-        <div class="logo">MY.PROFILE</div>
+        <div class="logo">PP<span>.dev</span></div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#guestbook">Guestbook</a></li>
+            <li><a href="#specialization">Specialization</a></li>
+            <li><a href="#gallery">Projects</a></li>
+            <li><a href="#guestbook">Connect</a></li>
         </ul>
     </nav>
 
     <div id="app">
-
         <section id="hero" class="section-padding">
-            <div class="hero-content glass-card fade-in">
-                <h1>Hello, I'm <span class="gradient-text">Your Name</span></h1>
-                <p class="subtitle">Creative Developer & Digital Explorer</p>
-                <a href="#about" class="cta-button">See My Work</a>
+            <div class="hero-container glass-card">
+                <span class="badge">BSIT Student @ APC</span>
+                <h1>Hi, I'm <span class="highlight">Patrick Pahayupan</span></h1>
+                <p>Information Technology student specializing in Cybersecurity, Database Management, and Mobile Development.</p>
+                <div class="hero-btns">
+                    <a href="mailto:pahayupan.patrick@gmail.com" class="btn-primary">Hire Me</a>
+                    <a href="#specialization" class="btn-secondary">Explore My Work</a>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="section-padding">
-            <h2 class="section-title gradient-text">About Me</h2>
-            <div class="about-grid">
-                <div class="about-text glass-card">
-                    <h3>My Journey</h3>
-                    <p>I build digital experiences that blend aesthetics with functionality. I am passionate about clean code, creative design, and learning new technologies like Vue.js.</p>
+        <section id="specialization" class="section-padding">
+            <h2 class="section-title">My Tech Stack</h2>
+            <div class="bento-grid">
+                <div class="bento-item glass-card large">
+                    <h3>Cybersecurity</h3>
+                    <p>Securing digital landscapes through proactive monitoring and threat analysis.</p>
+                    <div class="tag">Security</div>
                 </div>
-                <div class="about-skills glass-card">
-                    <h3>Core Skills</h3>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
-                        <li>Modern JavaScript</li>
-                        <li>UI/UX Design</li>
-                        <li>Responsive Layouts</li>
-                    </ul>
+                <div class="bento-item glass-card medium">
+                    <h3>Database MGMT</h3>
+                    <p>Proficient in <strong>MySQL</strong> and <strong>TigerGraph</strong>.</p>
+                    <div class="tag">SQL / GraphDB</div>
+                </div>
+                <div class="bento-item glass-card medium">
+                    <h3>Mobile Dev</h3>
+                    <p>Building cross-platform apps using <strong>Flutter</strong>.</p>
+                    <div class="tag">Dart</div>
+                </div>
+                <div class="bento-item glass-card small">
+                    <h3>Hardware</h3>
+                    <p>Arduino & Tinkercad.</p>
+                </div>
+                <div class="bento-item glass-card small">
+                    <h3>Fitness</h3>
+                    <p>13-Week Journey.</p>
                 </div>
             </div>
         </section>
 
         <section id="gallery" class="section-padding">
-            <h2 class="section-title gradient-text">Creative Gallery</h2>
-            <p style="text-align: center; color: var(--text-secondary);">Powered by Vue.js rendering lists</p>
-            
-            <div class="gallery-grid">
-                <div 
-                    v-for="(item, index) in galleryItems" 
-                    :key="index" 
-                    class="gallery-item glass-card"
-                >
-                    <div class="img-container">
-                        <img :src="'https://picsum.photos/400/300?random=' + index" :alt="item.caption">
+            <h2 class="section-title">Project Gallery</h2>
+            <div class="gallery-wrapper">
+                <div v-for="(img, index) in gallery" :key="index" class="gallery-card glass-card">
+                    <div class="img-box">
+                        <img :src="img.src" :alt="img.title">
                     </div>
-                    <div class="caption">
-                        <p>{{ item.caption }}</p>
-                    </div>
+                    <h4>{{ img.title }}</h4>
                 </div>
             </div>
         </section>
 
         <section id="guestbook" class="section-padding">
-            <h2 class="section-title gradient-text">Digital Guestbook</h2>
-            
-            <div class="guestbook-container glass-card">
-                <form @submit.prevent="addEntry" class="guestbook-form">
-                    <input 
-                        type="text" 
-                        v-model="newEntryName" 
-                        placeholder="Your Name" 
-                        required
-                    >
-                    <textarea 
-                        v-model="newEntryMessage" 
-                        placeholder="Leave a note..." 
-                        required
-                    ></textarea>
-                    <button type="submit" class="cta-button">Sign Guestbook</button>
+            <div class="guestbook-glass glass-card">
+                <h2>Guestbook</h2>
+                <form @submit.prevent="postMessage">
+                    <input v-model="name" placeholder="Your Name" required>
+                    <textarea v-model="msg" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
                 </form>
-
-                <div class="guestbook-entries">
-                    <h3>Recent Signatures:</h3>
-                    <ul>
-                        <li v-for="(entry, index) in guestbookList" :key="index" class="fade-in-entry">
-                            <strong>{{ entry.name }}:</strong> {{ entry.message }}
-                        </li>
-                    </ul>
+                <div class="messages">
+                    <div v-for="m in messages" class="msg-bubble">
+                        <strong>{{ m.user }}:</strong> {{ m.text }}
+                    </div>
                 </div>
             </div>
         </section>
+    </div>
 
-    </div> <footer>
-        <p>© 2024 Creative Profile. <a href="resources.html" style="color: var(--primary-color);">View Resources Used</a></p>
+    <footer>
+        <p>© 2026 Patrick Pahayupan | <a href="resources.html">Resources</a></p>
     </footer>
 
     <script src="script.js"></script>
