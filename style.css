@@ -1,99 +1,78 @@
 /* style.css */
 :root {
-    --brand: #2563eb;
-    --bg: #ffffff;
-    --text: #0f172a;
-    --text-soft: #64748b;
-    --surface: #f8fafc;
-    --border: #e2e8f0;
-    --radius: 12px;
+    --brand: #e11d48; /* The Weeknd Red */
+    --bg: #0a0a0a;    /* Midnight Black */
+    --text: #ffffff;
+    --text-soft: #a1a1aa;
+    --surface: #18181b;
+    --border: #27272a;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Light mode for NBHD "Wiped Out!" monochromatic look */
+[data-theme="light"] {
+    --bg: #ffffff;
+    --text: #000000;
+    --text-soft: #52525b;
+    --surface: #f4f4f5;
+    --border: #e4e4e7;
+    --brand: #000000;
+}
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.5;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Navbar */
-.navbar {
-    position: fixed;
-    top: 0; width: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    z-index: 1000;
+.hero {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), 
+                url('https://images.unsplash.com/photo-1514525253361-bee8a187449a?auto=format&fit=crop&q=80&w=1000');
+    background-size: cover;
+    background-position: center;
+    color: white;
 }
-.nav-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.passion-statement {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 2rem auto;
+    color: var(--text-soft);
 }
-.logo { font-weight: 800; font-size: 1.5rem; }
-.logo span { color: var(--brand); }
-.nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
-.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
 
-/* Hero */
-.hero { padding: 10rem 2rem 6rem; text-align: center; background: radial-gradient(circle at top right, #f1f5f9, #ffffff); }
-.hero-container { max-width: 800px; margin: 0 auto; }
-.badge { background: #dbeafe; color: var(--brand); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 700; }
-h1 { font-size: 4rem; letter-spacing: -2px; margin: 1.5rem 0; }
-.subtitle { font-size: 1.25rem; color: var(--text-soft); margin-bottom: 2rem; }
-.highlight { color: var(--text); font-weight: 700; border-bottom: 2px solid var(--brand); }
-
-/* Buttons */
-.btn-primary { background: var(--text); color: white; padding: 1rem 2rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
-.btn-secondary { color: var(--text); padding: 1rem 2rem; text-decoration: none; font-weight: 600; }
-
-/* Grid Layouts */
-.main-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.section { padding: 6rem 0; }
-.section-header { margin-bottom: 3rem; }
-
-/* Skills Grid (3-Column) */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-.skill-card {
-    background: var(--surface);
-    padding: 2.5rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    transition: 0.3s ease;
-}
-.skill-card:hover { border-color: var(--brand); transform: translateY(-5px); }
-.skill-icon { font-size: 2rem; margin-bottom: 1rem; }
-
-/* Projects Grid (2-Column) */
-.projects-grid {
+/* Tracklist Styling (Experienced Coder Look) */
+.tracklist-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 1rem;
 }
-.project-card {
-    background: white;
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-}
-.project-img { height: 200px; background: #e2e8f0; }
-.project-info { padding: 2rem; }
-.tags { display: flex; gap: 0.5rem; margin: 1rem 0; }
-.tags span { background: var(--surface); font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 4px; font-weight: 600; }
-.project-link { color: var(--brand); text-decoration: none; font-weight: 700; }
 
-/* Mobile Responsiveness */
-@media (max-width: 900px) {
-    .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-    h1 { font-size: 2.5rem; }
+.track-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--surface);
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: 0.3s;
+}
+
+.track-item:hover {
+    border-left-color: var(--brand);
+    background: var(--border);
+    transform: translateX(10px);
+}
+
+.track-num {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-right: 1.5rem;
+    opacity: 0.3;
+}
+
+.btn-primary {
+    background: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
