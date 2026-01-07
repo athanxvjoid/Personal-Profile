@@ -1,51 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patrick Pahayupan | IT Profile</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">PP.</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="resources.html">Resources</a></li>
-            <li><button id="theme-toggle">🌙</button></li>
-        </ul>
-    </nav>
+<header class="hero" id="about">
+    <h1>Patrick <span style="color:var(--primary)">Pahayupan</span></h1>
+    <p class="bio">Information Technology Student specializing in Cybersecurity & Database Management.</p>
+</header>
 
-    <header class="hero" id="about">
-        <div class="glass-card">
-            <h1>Patrick Pahayupan</h1>
-            <p>2nd Year IT Student @ APC</p>
-            <p class="bio">Building secure, data-driven solutions with a focus on Cybersecurity and Database Management.</p>
-        </div>
-    </header>
-
+<main>
     <section id="skills" class="container">
-        <h2 class="section-title">Technical Skills</h2>
+        <h2 class="section-title">Technical Expertise</h2>
         <div class="skills-grid">
             <div class="skill-item">MySQL</div>
             <div class="skill-item">Flutter</div>
             <div class="skill-item">Cybersecurity</div>
             <div class="skill-item">TigerGraph</div>
+            <div class="skill-item">Arduino</div>
         </div>
     </section>
 
     <section id="projects" class="container">
         <h2 class="section-title">Featured Work</h2>
-        <div class="project-card">
-            <h3>Fitness Journey App</h3>
-            <p>A mobile application built with Flutter for workout tracking.</p>
-            <a href="https://github.com/athanxvjoid" class="btn">View Repo</a>
+        <div class="projects-grid">
+            <article class="project-card">
+                <h3>Fitness Journey Tracker</h3>
+                <p>A mobile application built with Flutter to track progress over a 13-week fitness journey.</p>
+                <div class="tags" style="margin-top: 1rem; font-size: 0.8rem; color: var(--primary);">#Flutter #Dart #Mobile</div>
+                <a href="#" class="btn">Source Code →</a>
+            </article>
+            
+            <article class="project-card">
+                <h3>Cybersecurity Lab</h3>
+                <p>Setup and configuration of a virtualized network environment for penetration testing.</p>
+                <div class="tags" style="margin-top: 1rem; font-size: 0.8rem; color: var(--primary);">#CyberSec #Networking</div>
+                <a href="#" class="btn">Source Code →</a>
+            </article>
         </div>
     </section>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</main>
